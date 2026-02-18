@@ -227,25 +227,56 @@
     }
   }
 
-  function productCard(p) {
-    const slug = p.slug || p.id;
-    const img = resolveImageUrl(p);
+/* ================= UI: PRODUCT CARD ================= */
 
-    // ако нямаш badge, остави "" (или сложи твой файл)
-    const badge = "Images/lab.png";
+function productPriceText(p) {
+  const price = p.price_eur ?? p.price ?? 0;
+  return `€${Number(price).toFixed(2).replace(".", ",")} EUR`;
+}
 
-    return `
-      <div class="product-tile">
-        <a href="product.html?id=${encodeURIComponent(slug)}">
-          <div class="product-media">
-            <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name || "")}">
-            ${badge ? `<img class="product-badge" src="${escapeHtml(badge)}" alt="">` : ``}
-          </div>
-        </a>
-        <div class="product-price">${productPriceText(p)}</div>
-      </div>
-    `;
+function resolveImageUrl(p) {
+  const raw = (p.image_url || p.img || "").trim();
+  if (!raw) return "";
+
+  // ако вече е линк
+  if (/^https?:\/\//i.test(raw)) return raw;
+
+  // ако е локален път
+  if (raw.startsWith("Images/") || raw.startsWith("assets/") || raw.startsWith("/")) return raw;
+
+  // иначе приемаме, че е файл в Supabase Storage (bucket: images)
+  try {
+    const { data } = sb.storage.from("images").getPublicUrl(raw);
+    return data?.publicUrl || raw;
+  } catch {
+    return raw;
   }
+}
+
+function productCard(p) {
+  const slug = p.slug || p.id;
+  const img = resolveImageUrl(p);
+
+  // Ако нямаш LAB badge файл – остави празно и няма да се показва
+  const badge = ""; // пример: "Images/lab.png"
+
+  return `
+    <div class="product-tile">
+      <a href="product.html?id=${encodeURIComponent(slug)}">
+        <div class="product-media">
+          <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name || "")}">
+          ${
+            badge
+              ? `<img class="product-badge" src="${escapeHtml(badge)}" alt="" onerror="this.remove()">`
+              : ``
+          }
+        </div>
+      </a>
+      <div class="product-price">${productPriceText(p)}</div>
+    </div>
+  `;
+}
+
 
   function wireAddButtons(root) {
     root.querySelectorAll("button.add").forEach((btn) => {
