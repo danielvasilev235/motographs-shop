@@ -192,45 +192,60 @@
     return (data || []).filter(p => p.active !== false);
   }
 
-  /* ================= UI: PRODUCT CARD ================= */
+    /* ================= UI: PRODUCT CARD ================= */
+
+  function productPriceText(p) {
+    // ако имаш price_min/price_max (пример: 24.99 - 29.99)
+    const min = p.price_min ?? p.min_price ?? null;
+    const max = p.price_max ?? p.max_price ?? null;
+
+    if (min != null && max != null) {
+      return `€${Number(min).toFixed(2).replace(".", ",")} EUR – €${Number(max).toFixed(2).replace(".", ",")} EUR`;
+    }
+
+    const price = p.price_eur ?? p.price ?? 0;
+    return `€${Number(price).toFixed(2).replace(".", ",")} EUR`;
+  }
+
+  function resolveImageUrl(p) {
+    const raw = (p.image_url || p.img || "").trim();
+    if (!raw) return "";
+
+    // ако вече е пълен линк
+    if (/^https?:\/\//i.test(raw)) return raw;
+
+    // ако е локален път (пример Images/xxx.jpg)
+    if (raw.startsWith("Images/") || raw.startsWith("assets/") || raw.startsWith("/")) return raw;
+
+    // иначе приемаме, че е файл в Supabase Storage (bucket: images)
+    // ако твоят bucket е с друго име -> смени "images" на твоето
+    try {
+      const { data } = sb.storage.from("images").getPublicUrl(raw);
+      return data?.publicUrl || raw;
+    } catch {
+      return raw;
+    }
+  }
+
   function productCard(p) {
-  function productCard(p) {
-  const slug = p.slug || p.id;
-  const img = p.image_url || p.img || "";
-  const price = p.price_eur ?? p.price ?? 0;
+    const slug = p.slug || p.id;
+    const img = resolveImageUrl(p);
 
-  return `
-    <div class="product-tile">
-      <a href="product.html?id=${encodeURIComponent(slug)}">
-        <div class="product-media">
-          <img src="${img}" alt="">
-        </div>
-      </a>
-      <div class="product-price">€${Number(price).toFixed(2).replace(".", ",")} EUR</div>
-    </div>
-  `;
-}
+    // ако нямаш badge, остави "" (или сложи твой файл)
+    const badge = "Images/lab.png";
 
-
-function productCard(p) {
-  const slug = p.slug || p.id;
-  const img = p.image_url || p.img || "";
-  const badge = "Images/lab.png"; // <- сложи тук твоя LAB badge файл (или махни реда)
-
-  return `
-    <div class="product-tile">
-      <a href="product.html?id=${encodeURIComponent(slug)}">
-        <div class="product-media">
-          <img src="${img}" alt="">
-          <img class="product-badge" src="${badge}" alt="">
-        </div>
-      </a>
-
-      <div class="product-price">${productPriceText(p)}</div>
-    </div>
-  `;
-}
-}
+    return `
+      <div class="product-tile">
+        <a href="product.html?id=${encodeURIComponent(slug)}">
+          <div class="product-media">
+            <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name || "")}">
+            ${badge ? `<img class="product-badge" src="${escapeHtml(badge)}" alt="">` : ``}
+          </div>
+        </a>
+        <div class="product-price">${productPriceText(p)}</div>
+      </div>
+    `;
+  }
 
   function wireAddButtons(root) {
     root.querySelectorAll("button.add").forEach((btn) => {
