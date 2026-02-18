@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  :contentReference[oaicite:12]{index=12}Graphs</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<div id="promoBar" class="promo-bar">
+  <div class="promo-inner">
+    <span class="promo-text">🚚 При поръчка над <b>€49</b> получавате <b>безплатна доставка</b>.</span>
+    <button id="promoClose" class="promo-close" type="button" aria-label="Затвори">✕</button>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="Images/logomoto.png" alt="MotoGraphs Logo" class="site-logo">
+    </a>
+
+    <nav class="menu">
+      <a class="btn ghost" href="category.html?category=Силиконови">Магазин</a>
+      <a class="btn ghost" href="account.html">Профил</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="btn outline" href="cart.html">
+        🛒 Количка <span id="cartBadge" class="badge">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="container" id="productRoot">
+  <div class="product">
+    <div class="bigthumb" id="bigThumb"></div>
+
+    <div class="panel">
+      <h2 id="pName" style="margin:0 0 6px 0"></h2>
+      <div class="row">
+        <div id="pMeta" class="muted"></div>
+        <div id="pPrice" class="price"></div>
+      </div>
+
+      <hr />
+      <p id="pDesc" class="muted"></p>
+
+      <div style="margin-top:10px">
+        <b>Съвместими модели:</b>
+        <div id="pModels" style="margin-top:8px; display:flex; flex-wrap:wrap; gap:6px"></div>
+      </div>
+
+      <hr />
+
+      <div class="panel" style="padding:12px; background:#f6f7fb; border:1px solid #e5e7eb">
+        <div class="row">
+          <b>Избери модел телефон *</b>
+          <span class="muted" id="chosenModelText">не е избран</span>
+        </div>
+
+        <div style="margin-top:10px; position:relative">
+          <input id="modelSearch" class="select" placeholder="Search... (напр. iPhone 14 Pro)" />
+          <div id="modelList"
+               class="panel"
+               style="display:none; position:absolute; left:0; right:0; top:52px; max-height:240px; overflow:auto; z-index:50;">
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="qty">
+          <button id="minus" type="button">-</button>
+          <input id="qty" value="1" />
+          <button id="plus" type="button">+</button>
+        </div>
+
+        <button id="addBtn" class="btn" type="button">+ Добави в количка</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>Подобни продукти</h2>
+    <div class="muted">От същата категория</div>
+  </div>
+  <section id="relatedGrid" class="grid"></section>
+
+  <div class="footer">
+    <a class="muted" href="cart.html">Отиди към количката →</a>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>

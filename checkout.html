@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  :contentReference[oaicite:16]{index=16}Graphs</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<div id="promoBar" class="promo-bar">
+  <div class="promo-inner">
+    <span class="promo-text">🚚 При поръчка над <b>€49</b> получавате <b>безплатна доставка</b>.</span>
+    <button id="promoClose" class="promo-close" type="button" aria-label="Затвори">✕</button>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="Images/logomoto.png" alt="MotoGraphs Logo" class="site-logo">
+    </a>
+
+    <nav class="menu">
+      <a class="btn ghost" href="cart.html">Количка</a>
+      <a class="btn ghost" href="category.html?category=Силиконови">Магазин</a>
+      <a class="btn ghost" href="account.html">Профил</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="btn outline" href="cart.html">
+        🛒 <span id="cartBadge" class="badge">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="section-title">
+    <h2>Завършване на поръчка</h2>
+    <div class="muted">Поръчката се записва в Supabase</div>
+  </div>
+
+  <div class="cart">
+    <div class="panel">
+      <h3 style="margin:0 0 10px 0">Данни за доставка</h3>
+
+      <form id="checkoutForm">
+        <div style="display:grid; gap:10px">
+          <input id="name" class="select" placeholder="Име и фамилия" required />
+          <input id="phone" class="select" placeholder="Телефон" required />
+          <input id="address" class="select" placeholder="Адрес (град, улица, №)" required />
+          <select class="select">
+            <option>Плащане: Наложен платеж</option>
+          </select>
+          <button class="btn" type="submit">Потвърди поръчката</button>
+        </div>
+      </form>
+
+      <div id="success" class="panel" style="display:none; margin-top:12px; background:#eff6ff">
+        <h3 style="margin:0 0 6px 0">Успешно! 🎉</h3>
+        <p class="muted" style="margin:0">Поръчката е записана в базата. Количката е изчистена.</p>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn" href="index.html">Към началото</a>
+          <a class="btn outline" href="category.html?category=Силиконови">Още продукти</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="totalbox">
+      <h3 style="margin:0 0 10px 0">Твоята поръчка</h3>
+      <div id="orderItems"></div>
+      <hr />
+      <div class="totalrow"><span class="muted">Сума</span><b id="cSub">€0.00</b></div>
+      <div class="totalrow"><span class="muted">Доставка</span><b id="cShip">€0.00</b></div>
+      <div class="totalrow"><span class="muted">Общо</span><b id="cTotal">€0.00</b></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="muted">© MotoGraphs • Online store (Supabase)</span>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>

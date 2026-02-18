@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MotoGraphs – Калъфи за iPhone</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<div id="promoBar" class="promo-bar">
+  <div class="promo-inner">
+    <span class="promo-text">🚚 При поръчка над <b>€49</b> получавате <b>безплатна доставка</b>.</span>
+    <button id="promoClose" class="promo-close" type="button" aria-label="Затвори">✕</button>
+  </div>
+</div>
+
+<header class="top-header">
+  <div class="top-row">
+    <a class="icon-btn" href="category.html?category=Силиконови" aria-label="Shop">🛍️</a>
+    <span class="icon-btn" aria-hidden="true">🔍</span>
+
+    <a class="center-logo" href="index.html">
+      <img src="Images/logomoto.png" alt="MotoGraphs" />
+    </a>
+
+    <a class="icon-btn" href="account.html" aria-label="Account">👤</a>
+    <a class="icon-btn" href="cart.html" aria-label="Cart">🛒</a>
+  </div>
+
+  <div class="top-divider"></div>
+</header>
+
+<section class="how">
+  <h1 class="how-title">PHONE CASES</h1>
+  <div class="how-pill">HOW IT WORKS</div>
+
+  <div class="how-steps">
+    <div class="how-step"><div class="how-icon">①</div><div class="how-text">CHOOSE YOUR<br/>FAVORITE DESIGN</div></div>
+    <div class="how-step"><div class="how-icon">②</div><div class="how-text">CUSTOMIZE &amp; MAKE<br/>IT YOUR OWN</div></div>
+    <div class="how-step"><div class="how-icon">③</div><div class="how-text">ADD TO CART &amp;<br/>CHECKOUT</div></div>
+    <div class="how-step"><div class="how-icon">④</div><div class="how-text">ORDER SENT<br/>TO PRODUCTION</div></div>
+    <div class="how-step"><div class="how-icon">⑤</div><div class="how-text">ORDER PACKAGED<br/>&amp; SHIPPED</div></div>
+  </div>
+</section>
+
+<main class="container">
+  <div class="section-title">
+    <h2>Популярни продукти</h2>
+    <div class="muted">Кликни “Детайли”, избери модел и добави</div>
+  </div>
+
+  <section id="featuredGrid" class="products-grid"></section>
+
+</main>
+
+<div id="toast" class="toast"></div>
+
+<!-- Supabase JS (CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>

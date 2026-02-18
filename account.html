@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  :contentReference[oaicite:18]{index=18}ация • MotoGraphs</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<header class="container" style="padding:18px 0;">
+  <a href="index.html" class="brand">← Назад</a>
+</header>
+
+<main class="container" style="max-width:560px; padding-bottom:40px;">
+  <h1 style="margin:0 0 10px;">Вход / Регистрация</h1>
+  <p class="muted" style="margin:0 0 16px;">Реален профил чрез Supabase Auth.</p>
+
+  <div class="card" style="padding:16px; border:1px solid #e5e7eb; border-radius:16px;">
+    <div style="display:grid; gap:10px;">
+      <label>
+        <div style="font-weight:700; margin-bottom:6px;">Имейл</div>
+        <input id="accEmail" type="email" placeholder="name@email.com"
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb;" />
+      </label>
+
+      <label>
+        <div style="font-weight:700; margin-bottom:6px;">Парола</div>
+        <input id="accPass" type="password" placeholder="••••••••"
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb;" />
+      </label>
+
+      <label>
+        <div style="font-weight:700; margin-bottom:6px;">Име (по желание)</div>
+        <input id="accName" type="text" placeholder="Иван"
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb;" />
+      </label>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px;">
+        <button id="btnLogin" class="btn" type="button">Вход</button>
+        <button id="btnRegister" class="btn outline" type="button">Регистрация</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  :contentReference[oaicite:20]{index=20}MotoGraphs</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<header class="container" style="padding:18px 0; display:flex; justify-content:space-between; align-items:center;">
+  <a href="index.html" class="brand">← Начало</a>
+  <button id="btnLogout" type="button"
+          style="padding:10px 14px; border-radius:12px; border:1px solid #e5e7eb; background:#fff; font-weight:900; cursor:pointer;">
+    Изход
+  </button>
+</header>
+
+<main class="container" style="max-width:760px; padding-bottom:40px;">
+  <h1 style="margin:0 0 10px;">Моят профил</h1>
+
+  <div class="card" style="padding:16px; border:1px solid #e5e7eb; border-radius:16px;">
+    <div id="profileInfo" class="muted">Зареждане…</div>
+  </div>
+
+  <div style="margin-top:16px;">
+    <a href="cart.html" style="font-weight:900;">Отиди към количката →</a>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>

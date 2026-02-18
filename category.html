@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  :contentReference[oaicite:10]{index=10}Graphs</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<div id="promoBar" class="promo-bar">
+  <div class="promo-inner">
+    <span class="promo-text">🚚 При поръчка над <b>€49</b> получавате <b>безплатна доставка</b>.</span>
+    <button id="promoClose" class="promo-close" type="button" aria-label="Затвори">✕</button>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="Images/logomoto.png" alt="MotoGraphs Logo" class="site-logo">
+    </a>
+
+    <nav class="menu">
+      <a class="btn ghost" href="index.html">Начало</a>
+      <a class="btn ghost" href="account.html">Профил</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="btn outline" href="cart.html">
+        🛒 Количка <span id="cartBadge" class="badge">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="section-title">
+    <div>
+      <h2 id="catTitle">Категория</h2>
+      <div id="catSubtitle" class="muted"></div>
+    </div>
+    <div class="muted">Филтрирай и натисни “Приложи”</div>
+  </div>
+
+  <div class="filters">
+    <select id="filterCategory" class="select"></select>
+    <select id="filterSub" class="select"></select>
+    <select id="filterModel" class="select grow"></select>
+    <input id="pageSearch" class="select grow" placeholder="Търси (MagSafe, iPhone 15 Pro...)" />
+    <select id="filterSort" class="select">
+      <option value="popular">popular</option>
+      <option value="price_asc">price_asc</option>
+      <option value="price_desc">price_desc</option>
+      <option value="rating">rating</option>
+    </select>
+    <button id="applyFilters" class="btn">Приложи</button>
+    <a class="btn outline" href="category.html?category=Силиконови">Нулирай</a>
+  </div>
+
+  <p class="note">Съвет: сортирай по <b>rating</b> за “най-високо оценени”.</p>
+
+  <section id="categoryGrid" class="grid"></section>
+
+  <div class="footer">
+    <a class="muted" href="index.html">← обратно към началото</a>
+  </div>
+  <section id="categoryGrid" class="products-grid"></section>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>

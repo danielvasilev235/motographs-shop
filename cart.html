@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  :contentReference[oaicite:14]{index=14}Graphs</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<div id="promoBar" class="promo-bar">
+  <div class="promo-inner">
+    <span class="promo-text">🚚 При поръчка над <b>€49</b> получавате <b>безплатна доставка</b>.</span>
+    <button id="promoClose" class="promo-close" type="button" aria-label="Затвори">✕</button>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="Images/logomoto.png" alt="MotoGraphs Logo" class="site-logo">
+    </a>
+
+    <nav class="menu">
+      <a class="btn ghost" href="category.html?category=Силиконови">Магазин</a>
+      <a class="btn ghost" href="account.html">Профил</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="btn outline" href="cart.html">
+        🛒 Количка <span id="cartBadge" class="badge">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="section-title">
+    <h2>Твоята количка</h2>
+    <div class="muted">Промени количество или премахни</div>
+  </div>
+
+  <div class="cart">
+    <div id="cartList"></div>
+
+    <div id="summaryBox" class="totalbox">
+      <h3 style="margin:0 0 10px 0">Обобщение</h3>
+      <div class="totalrow"><span class="muted">Сума</span><b id="subTotal">€0.00</b></div>
+      <div class="totalrow"><span class="muted">Доставка</span><b id="ship">€0.00</b></div>
+      <hr />
+      <div class="totalrow"><span class="muted">Общо</span><b id="grandTotal">€0.00</b></div>
+      <button id="toCheckout" class="btn" style="width:100%; margin-top:10px">Към поръчка</button>
+      <p class="muted" style="font-size:12px; margin-top:10px">Безплатна доставка над €49.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a class="muted" href="category.html?category=Силиконови">← продължи пазаруването</a>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>
